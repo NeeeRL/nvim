@@ -1,6 +1,12 @@
 return {
   {
     "nvim-tree/nvim-tree.lua",
-    opts = {},
+    opts = {
+      actions = {
+        open_file = {
+          quit_on_open = false,
+        },
+      },
+    },
   },
 }
