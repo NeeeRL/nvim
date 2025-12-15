@@ -1,5 +1,12 @@
 return {
-  { "akinsho/toggleterm.nvim", version = "*", config = true },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    opts = {
+      direction = "horizontal",
+      size = 15,
+    },
+  },
   {
     "CRAG666/code_runner.nvim",
     config = function()

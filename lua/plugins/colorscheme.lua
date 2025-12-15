@@ -9,6 +9,7 @@ return {
   },
 
   { "neanias/everforest-nvim", "shaunsingh/nord.nvim" },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
   {
     "loctvl842/monokai-pro.nvim",
@@ -22,7 +23,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "monokai-pro",
+      colorscheme = "catppuccin",
     },
   },
 }
