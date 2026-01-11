@@ -2,14 +2,6 @@ return {
   {
     "akinsho/bufferline.nvim",
     keys = {
-      {
-        "<leader>w",
-        function()
-          Snacks.bufdelete()
-        end,
-        desc = "Delete Buffer",
-      },
-      -- shift+w -> close buf
       { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
       { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
     },
@@ -37,3 +29,4 @@ return {
     },
   },
 }
+
