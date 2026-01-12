@@ -53,22 +53,19 @@ return {
       }),
     })
 
-    -- ★ここから下を追加してください★
-    -- コマンドライン（:）モード用の補完設定
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
-        { name = "path" }, -- パス補完
+        { name = "path" },
       }, {
-        { name = "cmdline" }, -- コマンド補完
+        { name = "cmdline" },
       }),
     })
 
-    -- 検索（/ や ?）モード用の補完設定
     cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
-        { name = "buffer" }, -- 現在のバッファの中身から候補を出す
+        { name = "buffer" },
       },
     })
   end,
