@@ -3,7 +3,7 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     opts = {
-      direction = "horizontal",
+      direction = "float",
       size = 15,
     },
   },
@@ -13,33 +13,41 @@ return {
       require("code_runner").setup({
 
         mode = "toggleterm",
+        focus = true,
 
         filetype = {
-          python = "python3 -u",
-          typescript = "deno run",
-          javascript = "node",
+          -- Space置いて、Parrotの判定を吸わせる
+          python = " python3 -u",
+          typescript = " deno run",
+          javascript = " node",
 
           java = {
-            "cd $dir &&",
+            " cd $dir &&",
             "javac $fileName &&",
             "java $fileNameWithoutExt",
           },
           rust = {
-            "cd $dir &&",
+            " cd $dir &&",
             "rustc $fileName &&",
             "$dir/$fileNameWithoutExt",
           },
           cpp = {
-            "cd $dir &&",
+            "  cd $dir &&",
             "g++ $fileName -o $fileNameWithoutExt &&",
             "./$fileNameWithoutExt",
           },
         },
       })
 
-      vim.keymap.set("n", "<leader>r", ":RunCode<CR>", { noremap = true, silent = false })
-      vim.keymap.set("n", "<leader>f", ":RunFile<CR>", { noremap = true, silent = false })
-      vim.keymap.set("n", "<leader>c", ":RunClose<CR>", { noremap = true, silent = false })
+      vim.keymap.set("n", "<leader>r", function ()
+        if vim.bo.filetype == 'markdown' then
+          vim.cmd('MarkdownPreview')
+        else
+          vim.cmd("RunCode")
+        end
+      end, { noremap = true, silent = false })
+      -- vim.keymap.set("n", "<leader>f", ":RunFile<CR>", { noremap = true, silent = false })
+      -- vim.keymap.set("n", "<leader>c", ":RunClose<CR>", { noremap = true, silent = false })
     end,
-  },
+}
 }
