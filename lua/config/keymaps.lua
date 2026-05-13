@@ -7,3 +7,4 @@ map("n", "<C-k>", "<C-w>k", { desc = "上のウィンドウへ移動", noremap =
 
 map("n", "<Leader>x", "<cmd>bdelete<CR>", { desc = "現在のバッファを閉じる", noremap = true })
 
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })

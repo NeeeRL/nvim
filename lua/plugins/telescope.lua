@@ -16,6 +16,9 @@ return {
     local actions = require("telescope.actions")
     return {
       defaults = {
+        preview = {
+          treesitter = true,
+        },
         mappings = {
           i = {
             ["<C-j>"] = actions.move_selection_next,

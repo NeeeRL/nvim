@@ -26,16 +26,22 @@ return {
       show_close_icon = true,
       buffer_close_icon = "󰅖",
       modified_icon = "●",
-      close_icon = "",
-      left_trunc_marker = "",
-      right_trunc_marker = "",
+      close_icon = " ",
+      left_trunc_marker = " ",
+      right_trunc_marker = " ",
       persist_buffer_sort = true,
       always_show_bufferline = true,
       indicator = {
         style = "none",
       },
     },
-    highlights = {},
+    highlights = {
+      -- タブバーを貫通する線の色を、下の縦線と同じ色に揃える！
+      offset_separator = {
+        fg = "#f4b8e4", -- ストロベリーミルク色
+        bg = "NONE",
+      },
+    },
   },
   config = function(_, opts)
     require("bufferline").setup(opts)

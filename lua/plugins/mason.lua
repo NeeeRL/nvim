@@ -11,6 +11,20 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require("mason").setup(opts)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "mason",
+        callback = function()
+          -- Redditで言われていた「NormalFloatのクリア」と、念のためのMason専用背景のクリア
+          vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+          vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+          vim.api.nvim_set_hl(0, "MasonNormal", { bg = "NONE" })
+          vim.api.nvim_set_hl(0, "MasonNormalNC", { bg = "NONE" })
+        end,
+      })
+    end,
   },
 
   {
@@ -61,9 +75,9 @@ return {
         callback = function(ev)
           local opts = { buffer = ev.buf }
 
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)           -- カーソル下の情報を表示
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)     -- 定義元へジャンプ
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)     -- 参照先を一覧表示
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- カーソル下の情報を表示
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- 定義元へジャンプ
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts) -- 参照先を一覧表示
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- 変数名などをリネーム
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- コードアクション
         end,

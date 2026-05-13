@@ -10,11 +10,11 @@ vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
       -- 基本
       "Normal", "NormalNC", "NormalFloat", "FloatBorder",
       "SignColumn", "LineNr", "CursorLineNr", "EndOfBuffer",
-      
+
       -- Neo-tree
       "NeoTreeNormal", "NeoTreeNormalNC", "NeoTreeEndOfBuffer",
       "NeoTreeWinSeparator", "NeoTreeCursorLine", "NeoTreeTitleBar",
-      
+
       -- BufferLine
       "BufferLineFill", "BufferLineBackground", "BufferLineOffset",
       "BufferLineSeparator", "BufferLineSeparatorVisible",
@@ -23,7 +23,6 @@ vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
     }
 
     for _, group in ipairs(groups) do
-      -- 背景(guibg)のみをNONEにする (他の属性は維持したいが、highlightコマンドでguibg=NONEすると他が消えることはない)
       vim.cmd(string.format("highlight %s guibg=NONE ctermbg=NONE", group))
     end
   end,

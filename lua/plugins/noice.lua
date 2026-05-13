@@ -3,6 +3,13 @@ return {
   event = "VeryLazy",
   dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
   opts = {
+    cmdline = {
+      format = {
+        cmdline = { icon = "󰍟" },
+        search_down = { icon = "󰿟" },
+        search_up = { icon = " " },
+      },
+    },
     lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -29,7 +36,7 @@ return {
       popupmenu = {
         relative = "editor",
         position = {
-          row = "24%", -- コマンドラインの少し下に出す
+          row = "24%",
           col = "50%",
         },
         size = {
@@ -47,3 +54,4 @@ return {
     },
   },
 }
+

@@ -1,13 +1,5 @@
 return {
   {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    opts = {
-      direction = "float",
-      size = 15,
-    },
-  },
-  {
     "CRAG666/code_runner.nvim",
     config = function()
       require("code_runner").setup({
@@ -16,23 +8,22 @@ return {
         focus = true,
 
         filetype = {
-          -- Space置いて、Parrotの判定を吸わせる
-          python = " python3 -u",
-          typescript = " deno run",
-          javascript = " node",
+          python = "python3 -u",
+          typescript = "pnpm run",
+          javascript = "node",
 
           java = {
-            " cd $dir &&",
+            "cd $dir &&",
             "javac $fileName &&",
             "java $fileNameWithoutExt",
           },
           rust = {
-            " cd $dir &&",
+            "cd $dir &&",
             "rustc $fileName &&",
             "$dir/$fileNameWithoutExt",
           },
           cpp = {
-            "  cd $dir &&",
+            "cd $dir &&",
             "g++ $fileName -o $fileNameWithoutExt &&",
             "./$fileNameWithoutExt",
           },

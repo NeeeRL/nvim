@@ -9,18 +9,18 @@ vim.opt.tabstop = 2
 
 -- バックスペース入力時に、まるでタブを消すかのように挙動させる幅
 vim.opt.softtabstop = 2
---
--- エラーメッセージを行の右側に表示する（標準の挙動）
+
+-- エラーの行末表示（赤文字）を完全にオフ<-別のプラグインとの競合を防ぐ
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = "●",
-    source = true,
-  },
-  float = {
-    source = true,
-  },
-  signs = true, -- 左端（行番号の横）のアイコンを表示
-  underline = true, -- エラー箇所の下線を表示
-  update_in_insert = false, -- 入力中は表示を更新しない（チラつき防止）
-  severity_sort = true, -- 重大なエラーを優先表示
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
 })
+
+vim.opt.signcolumn = "yes:2" -- サインカラム（アイコンが出る場所）を常にx列分確保
+vim.opt.numberwidth = 2
+
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#6e6a86", bg = "NONE" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ebbae2", bold = true })
