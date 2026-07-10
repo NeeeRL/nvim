@@ -35,11 +35,27 @@ return {
     },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls" },
+        ensure_installed = { "lua_ls", "vtsls" },
 
         handlers = {
           function(server_name)
             require("lspconfig")[server_name].setup({})
+          end,
+
+          ["vtsls"] = function()
+            require("lspconfig").vtsls.setup({
+              settings = {
+                typescript = {
+                  tsserver = {
+                    -- 巨大なプロジェクトでメモリを爆食いするファイル監視を制限する設定
+                    watchOptions = {
+                      watchFile = "fixedPollingInterval",
+                      watchDirectory = "fixedPollingInterval",
+                    },
+                  },
+                },
+              },
+            })
           end,
 
           ["lua_ls"] = function()

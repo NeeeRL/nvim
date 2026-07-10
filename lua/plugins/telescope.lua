@@ -16,6 +16,14 @@ return {
     local actions = require("telescope.actions")
     return {
       defaults = {
+        file_ignore_patterns = {
+          "node_modules/.*",
+          "%.git/.*",
+          "%.next/.*", -- Next.js（Cloudflare環境なら念のため）
+          "dist/.*", -- ビルド成果物
+          "%.wrangler/.*", -- Cloudflare Wranglerのキャッシュや一時ファイル
+        },
+        find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
         preview = {
           treesitter = true,
         },
