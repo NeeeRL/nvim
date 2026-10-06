@@ -5,7 +5,7 @@ return {
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
     opts = {
-      ensure_installed = { "json", "jsonc", "lua", "vim", "vimdoc", "javascript", "typescript", "python" },
+      ensure_installed = { "json", "jsonc", "lua", "vim", "vimdoc", "javascript", "typescript", "python", "ruby" },
       highlight = { enable = true },
     },
     config = function(_, opts)

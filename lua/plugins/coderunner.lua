@@ -17,6 +17,11 @@ return {
             "javac $fileName &&",
             "java $fileNameWithoutExt",
           },
+          ruby = {
+            "cd $dir &&",
+            "ruby $fileName",
+          },
+
           rust = {
             "cd $dir &&",
             "rustc $fileName &&",
@@ -30,9 +35,9 @@ return {
         },
       })
 
-      vim.keymap.set("n", "<leader>r", function ()
-        if vim.bo.filetype == 'markdown' then
-          vim.cmd('MarkdownPreview')
+      vim.keymap.set("n", "<leader>r", function()
+        if vim.bo.filetype == "markdown" then
+          vim.cmd("MarkdownPreview")
         else
           vim.cmd("RunCode")
         end
@@ -40,5 +45,5 @@ return {
       -- vim.keymap.set("n", "<leader>f", ":RunFile<CR>", { noremap = true, silent = false })
       -- vim.keymap.set("n", "<leader>c", ":RunClose<CR>", { noremap = true, silent = false })
     end,
-}
+  },
 }

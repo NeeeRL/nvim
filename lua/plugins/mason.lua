@@ -33,42 +33,51 @@ return {
       "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
     },
+
     config = function()
+      -- TypeScript
+      vim.lsp.config("vtsls", {
+        settings = {
+          typescript = {
+            tsserver = {
+              watchOptions = {
+                watchFile = "fixedPollingInterval",
+                watchDirectory = "fixedPollingInterval",
+              },
+            },
+          },
+        },
+      })
+
+      -- Lua
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
+      })
+
+      -- Ruby / Rails
+      vim.lsp.config("ruby_lsp", {
+        init_options = {
+          formatter = "auto",
+
+          addonSettings = {
+            ["Ruby LSP Rails"] = {
+              enablePendingMigrationsPrompt = false,
+            },
+          },
+        },
+      })
+
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "vtsls" },
-
-        handlers = {
-          function(server_name)
-            require("lspconfig")[server_name].setup({})
-          end,
-
-          ["vtsls"] = function()
-            require("lspconfig").vtsls.setup({
-              settings = {
-                typescript = {
-                  tsserver = {
-                    -- 巨大なプロジェクトでメモリを爆食いするファイル監視を制限する設定
-                    watchOptions = {
-                      watchFile = "fixedPollingInterval",
-                      watchDirectory = "fixedPollingInterval",
-                    },
-                  },
-                },
-              },
-            })
-          end,
-
-          ["lua_ls"] = function()
-            require("lspconfig").lua_ls.setup({
-              settings = {
-                Lua = {
-                  diagnostics = {
-                    globals = { "vim" },
-                  },
-                },
-              },
-            })
-          end,
+        ensure_installed = {
+          "lua_ls",
+          "vtsls",
+          "ruby_lsp",
         },
       })
     end,
